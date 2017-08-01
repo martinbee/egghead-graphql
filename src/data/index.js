@@ -20,3 +20,16 @@ export const getVideoById = (videoId) => new Promise((resolve) => {
   resolve(videos.find(({ id }) => id === videoId));
 });
 
+export const createVideo = ({ title, duration, released }) => {
+  const video = {
+    id: new Buffer(title, 'utf8').toString('base64'),
+    title,
+    duration,
+    released,
+  };
+
+  videos.push(video);
+
+  return video;
+};
+
