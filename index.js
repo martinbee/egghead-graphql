@@ -1,4 +1,9 @@
+import express from 'express';
+import graphqlHTTP from 'express-graphql';
 import { graphql, buildSchema } from 'graphql';
+
+const PORT = process.env.PORT || 3000;
+const server = express();
 
 const schema = buildSchema(`
   type Video {
@@ -44,17 +49,13 @@ const resolvers = {
   videos: () => videos,
 };
 
-const query = `
-  query myFirstQuery {
-    videos {
-      id,
-      title,
-      duration,
-      watched,
-    }
-  }
-`;
+server.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+    rootValue: resolvers,
+  })
+);
 
-graphql(schema, query, resolvers)
-  .then(result => console.log(result))
-  .catch(errors => console.log(errors));
+server.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
