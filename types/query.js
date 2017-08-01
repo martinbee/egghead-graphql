@@ -1,4 +1,8 @@
-import { GraphQLObjectType, GraphQLID } from 'graphql';
+import {
+  GraphQLObjectType,
+  GraphQLNonNull,
+  GraphQLID,
+} from 'graphql';
 
 import videoType from './video.js';
 import videoResolver from '../resolvers/video.js';
@@ -10,7 +14,7 @@ const queryType = new GraphQLObjectType({
     video: {
       args: {
         id: {
-          type: GraphQLID,
+          type: new GraphQLNonNull(GraphQLID),
           description: 'The id of the video',
         },
       },
