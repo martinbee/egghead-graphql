@@ -7,10 +7,17 @@ import {
 import videoType from './video.js';
 import videoResolver from '../resolvers/video.js';
 
+import videosType from './videos.js';
+import videosResolver from '../resolvers/videos.js';
+
 const queryType = new GraphQLObjectType({
   name: 'QueryType',
   description: 'The root query type.',
   fields: {
+    videos: {
+      type: videosType,
+      resolve: videosResolver,
+    },
     video: {
       args: {
         id: {
