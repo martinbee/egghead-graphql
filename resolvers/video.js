@@ -1,12 +1,5 @@
-const videoResolver = () => new Promise(
-  (resolve) => {
-    resolve({
-      id: 'a',
-      title: 'GraphQL',
-      duration: 180,
-      watched: false,
-    });
-  }
-);
+import getVideoById from '../src/data/';
+
+const videoResolver = (_, args) => getVideoById(args.id);
 
 export default videoResolver;
