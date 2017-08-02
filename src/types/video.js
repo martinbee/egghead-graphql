@@ -1,17 +1,20 @@
 import {
   GraphQLObjectType,
+  GraphQLNonNull,
   GraphQLID,
   GraphQLString,
   GraphQLInt,
   GraphQLBoolean,
 } from 'graphql';
 
+import nodeInterface from '../interfaces/node.js';
+
 const videoType = new GraphQLObjectType({
   name: 'Video',
   description: 'A video on egghead.io.',
   fields: {
     id: {
-      type: GraphQLID,
+      type: new GraphQLNonNull(GraphQLID),
       description: 'The id of the video.',
     },
     title: {
@@ -26,7 +29,8 @@ const videoType = new GraphQLObjectType({
       type: GraphQLBoolean,
       description: 'Whether or not the viewer has watched the video.',
     },
-  }
+  },
+  interfaces: [nodeInterface],
 });
 
 export default videoType;

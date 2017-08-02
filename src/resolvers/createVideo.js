@@ -1,4 +1,4 @@
-import { createVideo } from '../src/data/';
+import { createVideo } from '../data/';
 
 const createVideoResolver = (_, args) => createVideo(args.video);
 

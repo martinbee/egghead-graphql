@@ -1,4 +1,4 @@
-import { getVideoById } from '../src/data/';
+import { getVideoById } from '../data/';
 
 const videoResolver = (_, args) => getVideoById(args.id);
 

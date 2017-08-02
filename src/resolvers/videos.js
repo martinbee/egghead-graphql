@@ -1,4 +1,4 @@
-import { getVideos } from '../src/data/';
+import { getVideos } from '../data/';
 
 const videosResolver = () => getVideos();
 

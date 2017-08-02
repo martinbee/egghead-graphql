@@ -2,8 +2,8 @@ import express from 'express';
 import { GraphQLSchema } from 'graphql';
 import graphqlHTTP from 'express-graphql';
 
-import queryType from './types/query.js';
-import mutationType from './types/mutation.js';
+import queryType from './src/types/query.js';
+import mutationType from './src/types/mutation.js';
 
 const PORT = process.env.PORT || 3000;
 const server = express();
